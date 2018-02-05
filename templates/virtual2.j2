@@ -1,0 +1,9 @@
+<VirtualHost *:{{ http_port }}>
+    ServerAdmin webmaster@{{ domain2 }}.com
+    ServerName {{ domain2 }}.com
+    ServerAlias www.{{ domain2 }}.com
+    DocumentRoot /var/www/{{ domain2 }}
+    ErrorLog {{ apachelog }}/{{ domain2 }}/error.log
+    CustomLog {{ apachelog }}/{{ domain2 }}/access.log combined
+</VirtualHost>
+

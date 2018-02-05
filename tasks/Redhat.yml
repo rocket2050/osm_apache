@@ -1,0 +1,40 @@
+---
+- name: install httpd
+  yum: name=httpd state=present update_cache=yes
+
+- name: enable httpd
+  service: name=httpd enabled=yes
+  notify:
+   - restart httpd
+
+- name: create logs and virtual host directories
+  file:
+    path: "{{ item }}"
+    state: directory 
+  with_items:
+    - /var/log/httpd/{{ domain1 }}
+    - /var/log/httpd/{{ domain2 }}
+    - /var/www/{{ domain1 }}
+    - /var/www/{{ domain2 }}
+
+- name: update virtual1 host
+  template: src=virtual1.j2 dest=/etc/httpd/conf.d/{{ domain1 }}.conf
+
+- name: update log dir
+  shell: sed -i -e 's/apache2/httpd/g' {{ red_conf }}/{{ domain1 }}.conf
+
+- name: update index1 file
+  template: src=index1.j2 dest=/var/www/{{ domain1 }}/index.html
+  notify:
+   - restart httpd
+
+- name: update virtual2 host
+  template: src=virtual2.j2 dest=/etc/httpd/conf.d/{{ domain2 }}.conf
+
+- name: update log dir
+  shell: sed -i -e 's/apache2/httpd/g' {{ red_conf }}/{{ domain2 }}.conf
+
+- name: update index2 file
+  template: src=index2.j2 dest=/var/www/{{ domain2 }}/index.html
+  notify:
+   - restart httpd

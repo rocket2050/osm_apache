@@ -1,0 +1,43 @@
+---
+- name: install apache
+  apt: name=apache2 state=present update_cache=yes
+  notify:
+   - restart apache2
+
+- name: create log and virtual host directories
+  file:
+    path: "{{ item }}"
+    state: directory 
+  with_items:
+    - /var/log/apache2/{{ domain1 }}
+    - /var/log/apache2/{{ domain2 }}
+    - /var/www/{{ domain1 }}
+    - /var/www/{{ domain2 }}
+
+- name: update virtual1 host
+  template: src=virtual1.j2 dest=/etc/apache2/sites-available/{{ domain1 }}.conf
+
+- name: update index1 file
+  template: src=index1.j2 dest=/var/www/{{ domain1 }}/index.html
+  notify:
+   - restart apache2
+
+- name: update virtual2 host
+  template: src=virtual2.j2 dest=/etc/apache2/sites-available/{{ domain2 }}.conf
+
+- name: update index2 file
+  template: src=index2.j2 dest=/var/www/{{ domain2 }}/index.html
+  notify:
+   - restart apache2
+
+- name: enable site1
+  command: a2ensite {{ domain1 }}
+  args:
+     creates: /etc/apache2/sites-enabled/{{ domain1 }}.conf
+  
+- name: enable site2
+  command: a2ensite {{ domain2 }}
+  args:
+     creates: /etc/apache2/sites-enabled/{{ domain2 }}.conf
+
+

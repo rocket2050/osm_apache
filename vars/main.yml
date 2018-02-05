@@ -1,0 +1,9 @@
+http_port: 80
+domain1: test1
+domain2: test2
+apachelog: /var/log/apache2
+httpdlog: /var/log/httpd
+text1: Hi this is new site test1.com  !!
+text2: Hi this is new site test2.com  !!
+deb_conf: /etc/apache2/sites-available
+red_conf: /etc/httpd/conf.d
