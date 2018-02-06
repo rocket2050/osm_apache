@@ -5,55 +5,56 @@
 
 # Example:
 
-vi /etc/hosts  
-IP test1.com  
-IP test2.com  
+######  vim /etc/hosts  
+######  IP test1.com  
+######  IP test2.com  
 
 ## Role Variables
 
-Available variables are listed below, along with default values:
+######  Available variables are listed below, along with default values:
  
 ## The variables provided by this role which are mandatory
 
-http_port: 80
-domain1: test1
-domain2: test2
-apachelog: /var/log/apache2
-httpdlog: /var/log/httpd
-text1: Hi this is new site test1.com  !!
-text2: Hi this is new site test2.com  !!
-deb_conf: /etc/apache2/sites-available
-red_conf: /etc/httpd/conf.d
+######   http_port: 80
+######   domain1: test1
+######   domain2: test2
+######   apachelog: /var/log/apache2
+######   httpdlog: /var/log/httpd
+######   text1: Hi this is new site test1.com  !!
+######   text2: Hi this is new site test2.com  !!
+######   deb_conf: /etc/apache2/sites-available
+######   red_conf: /etc/httpd/conf.d
 
 ## Dependencies
 
-None.
+######   None.
 
 ## Example Playbook (installs zabbix-server version 3.0 and above)
  
  
-- hosts: localhost
+```- hosts: localhost
   become: yes
   roles:
-    - osm_apache
+    - osm_apache 
+```
 
 # How to use playbook:
- ansible-playbook -i inventory apache.yml
 
-where:
+``` ansible-playbook -i inventory apache.yml ```
 
--i inventory: is the host infor over which this playbook is going to be install
+######  where:
 
-apache.yml: is the file which execute the roles, inside the roles we defined the installation method and the OS distribution types.
+######  -i inventory: is the host infor over which this playbook is going to be install
 
-# License
+###### apache.yml: is the file which execute the roles, inside the roles we defined the installation method and the OS distribution types.
 
-MIT / BSD
+###### License
 
-Author Information
+###### MIT / BSD
 
-www.opstree.com
+###### Author Information
 
-blog.opstree.com
-Contact GitHub API Training Shop Blog About
+###### www.opstree.com
+
+###### blog.opstree.com
 
