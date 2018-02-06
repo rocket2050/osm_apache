@@ -1,5 +1,5 @@
 ---
-- hosts: all
-  sudo: yes
+- hosts: localhost
+  become: yes
   roles:
-   - apache
+   - osm_apache
