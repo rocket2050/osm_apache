@@ -32,9 +32,10 @@
 ## Example Playbook (installs zabbix-server version 3.0 and above)
  
  
-```- hosts: localhost
-  become: yes
-  roles:
+```
+ - hosts: localhost
+   become: yes
+   roles:
     - osm_apache 
 ```
 
