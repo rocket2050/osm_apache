@@ -1,4 +1,5 @@
-# This repository for installation of apache over CentOS/Redhat/Debian/Ubuntu.
+# osm_apache
+This repository for installation of apache over CentOS/Redhat/Debian/Ubuntu.
 In this repo we are deploying two virtual hosts with the name of test1.com and test2.com.
 For accessing domains from local system bind domain name with IP. 
 
