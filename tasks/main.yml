@@ -2,10 +2,10 @@
 # Installation of apache/httpd
 
 - name: gather OS info
-  include: Redhat.yml
+  include_tasks: Redhat.yml
   when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
 
 - name: gather OS info
-  include: Debian.yml
+  include_tasks: Debian.yml
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
