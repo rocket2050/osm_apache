@@ -29,7 +29,7 @@
 
 ######   None.
 
-## Example Playbook (installs zabbix-server version 3.0 and above)
+## Example Playbook
  
  
 ```
